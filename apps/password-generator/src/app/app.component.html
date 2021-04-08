@@ -1,0 +1,39 @@
+<h1>Angular - Password Generator</h1>
+
+<div>
+  <label for="passwordLength">Enter Password Length</label>
+  <input
+    (input)="onInputLength($event.target.value)"
+    name="passwordLength"
+    type="number"
+  />
+</div>
+
+<div>
+  <label for="useLetters">Use Letters</label>
+  <input (change)="onChangeUseLetters()" name="useLetters" type="checkbox" />
+</div>
+
+<div>
+  <label for="useNumbers">Use Numbers</label>
+  <input (change)="onChangeUseNumbers()" name="useNumbers" type="checkbox" />
+</div>
+
+<div>
+  <label for="useSymbols">Use Symbols</label>
+  <input (change)="onChangeUseSymbols()" name="useSymbols" type="checkbox" />
+</div>
+
+<div>
+  <button
+    [disabled]="!(length && (hasLetters || hasNumbers || hasSymbols))"
+    (click)="onButtonClick()"
+  >
+    Generate the password !
+  </button>
+</div>
+
+<div *ngIf="password">
+  <label for="generatedPassword">Here is your generated password: </label>
+  <input disabled name="generatedPassword" type="text" [value]="password" />
+</div>
